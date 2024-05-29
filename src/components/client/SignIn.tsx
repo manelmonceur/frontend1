@@ -19,6 +19,10 @@ const SignIn = () => {
       >
         <Input.Password className="w-[400px]" />
       </Form.Item>
+
+      <a href="#" className="text-sky-600">
+        Reset Password
+      </a>
     </>
   );
 };

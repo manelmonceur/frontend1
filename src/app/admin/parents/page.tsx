@@ -1,15 +1,34 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import { fetcher } from '../../../../utils/fetcher';
 import { Table } from 'antd';
 import { Button, Space } from 'antd';
 import { FiMessageCircle } from 'react-icons/fi';
-
+import { activateParent, deleteParent, getParent } from '@/services/apiService';
 
 const Users = () => {
-  const { data } = useSWR('/user', fetcher);
+  const [parents, setParents] = useState([]);
+
+  const fetchParents = async () => {
+    const response = await getParent();
+    setParents(response);
+  };
+
+  const handleActivate = async (id: any) => {
+    await activateParent(id);
+    await fetchParents();
+  };
+
+  const handleDelete = async (id: any) => {
+    await deleteParent(id);
+    await fetchParents();
+  };
+
+  useEffect(() => {
+    fetchParents();
+  }, []);
 
   const columns = [
     {
@@ -33,59 +52,47 @@ const Users = () => {
       key: 'email',
     },
     {
-      title: 'Role',
-      dataIndex: 'role',
-      key: 'role',
-    }, {
-      title: "Status",
-      key: "status",
+      title: 'Meet Range',
+      key: 'meetRange',
+      render: (text: any, record: any) => (
+        <span>
+          {record.dateRange[0]} - {record.dateRange[1]}
+        </span>
+      ),
+    },
+    {
+      title: 'Status',
+      key: 'activate',
       render: (text: any, record: any) => (
         <Space>
-          <Button
-            // onClick={() => {
-            //   setEditedMeet(record);
-            //   setIsMeetModalOpen(true);
-            // }}
-          >
-Pending
-          </Button>
-         
+          <Button>{record.activate ? 'Active' : 'Pending'}</Button>
         </Space>
       ),
     },
-      {
-      title: "Action",
-      key: "action",
+    {
+      title: 'Action',
+      key: 'action',
       render: (text: any, record: any) => (
         <Space>
-          <Button
-            // onClick={() => {
-            //   setEditedMeet(record);
-            //   setIsMeetModalOpen(true);
-            // }}
-          >
-<FiMessageCircle />
-          </Button>
+          {!record.activate ? (
+            <Button onClick={() => handleActivate(record._id)}>
+              {'Activate'}
+            </Button>
+          ) : (
+            ''
+          )}
           <Button
             type="primary"
             danger
-            // onClick={() => {
-            //   modal.confirm({
-            //     title: "Are you sure you want to delete this child?",
-            //     onOk: async () => {
-            //       await axios.delete(`/child/${record._id}`);
-            //       await mutate("/child");
-            //       message.success("Child deleted successfully");
-            //     },
-            //   });
-            // }}
+            onClick={() => {
+              handleDelete(record._id);
+            }}
           >
             Delete
           </Button>
         </Space>
       ),
     },
-
   ];
 
   return (
@@ -94,7 +101,7 @@ Pending
         <h1 className="text-xl">Parents</h1>
       </div>
 
-      <Table dataSource={data?.filter((user)=>user.role==="parent")} columns={columns} />
+      <Table dataSource={parents} columns={columns} />
     </div>
   );
 };

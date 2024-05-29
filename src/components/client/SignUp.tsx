@@ -1,52 +1,69 @@
 import React from 'react';
-import { Form, Input } from 'antd';
+import { DatePicker, Form, Input } from 'antd';
+
+const { RangePicker } = DatePicker;
 
 const SignUp = () => {
   return (
-    <>
+    <div className="w-full grid grid-cols-2">
       <Form.Item
         label="First name"
         name="firstName"
+        className="w-full "
         rules={[{ required: true, message: 'Please input your username!' }]}
       >
-        <Input className="w-[400px]" />
+        <Input className="w-full" />
       </Form.Item>
       <Form.Item
         label="Last name"
         name="lastName"
+        className="w-full"
         rules={[{ required: true, message: 'Please input your username!' }]}
       >
-        <Input className="w-[400px]" />
+        <Input className="w-full" />
       </Form.Item>
       <Form.Item
-        label="Phone Number"
+        label="Phone"
         name="phone"
+        className="w-full "
         rules={[{ required: true, message: 'Please input your phone number!' }]}
       >
-        <Input className="w-[400px]" />
+        <Input className="min-w-full" />
       </Form.Item>
       <Form.Item
         label="Email"
         name="email"
+        className="w-full"
         rules={[{ required: true, message: 'Please input your username!' }]}
       >
-        <Input type="email" className="w-[400px]" />
+        <Input type="email" className="w-full" />
       </Form.Item>
       <Form.Item
         label="Password"
         name="password"
+        className="w-full"
         rules={[{ required: true, message: 'Please input your password!' }]}
       >
-        <Input.Password className="w-[400px]" />
+        <Input.Password className="w-full mt-5" />
       </Form.Item>
       <Form.Item
-        label="Confirm Password"
+        label="Confirm password"
         name="confirmPassword"
+        className="w-full"
         rules={[{ required: true, message: 'Please confirm your password!' }]}
       >
-        <Input.Password className="w-[400px]" />
+        <Input.Password className="w-full" />
       </Form.Item>
-    </>
+
+      <Form.Item
+        label="Meet date"
+        name="dateRange"
+        className="w-full"
+        rules={[{ required: true, message: 'Please select a date range!' }]}
+      >
+        <RangePicker className="w-full" />
+      </Form.Item>
+    </div>
   );
 };
 
