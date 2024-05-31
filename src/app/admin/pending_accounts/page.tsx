@@ -61,14 +61,26 @@ const Users = () => {
       ),
     },
     {
+      title: 'Status',
+      key: 'activate',
+      render: (text: any, record: any) => (
+        <Space>
+          <Button>{record.activate ? 'Active' : 'Pending'}</Button>
+        </Space>
+      ),
+    },
+    {
       title: 'Action',
       key: 'action',
       render: (text: any, record: any) => (
         <Space>
-          <Button>
-            <FiMessageCircle />
-          </Button>
-
+          {!record.activate ? (
+            <Button onClick={() => handleActivate(record._id)}>
+              {'Activate'}
+            </Button>
+          ) : (
+            ''
+          )}
           <Button
             type="primary"
             danger
@@ -84,13 +96,13 @@ const Users = () => {
   ];
 
   return (
-    <div className="p-4">
+    <div className="p-4 space-y-5">
       <div>
-        <h1 className="text-xl">Parents</h1>
+        <h1 className="text-xl">Pending Accounts</h1>
       </div>
 
       <Table
-        dataSource={parents.filter((p) => p.activate == true)}
+        dataSource={parents.filter((p) => p.activate == false)}
         columns={columns}
       />
     </div>

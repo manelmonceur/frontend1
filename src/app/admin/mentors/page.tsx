@@ -7,7 +7,7 @@ import { Table } from 'antd';
 import { Button, Space } from 'antd';
 import { FiMessageCircle } from 'react-icons/fi';
 
-const Users = () => {
+const Mentors = () => {
   const data = [
     {
       firstName: 'Ahmed',
@@ -15,7 +15,6 @@ const Users = () => {
       phone: '55 148 963',
       email: 'ahmed@gmail.com',
       gender: 'M',
-      n_students: 5,
     },
     {
       firstName: 'Aymen',
@@ -23,7 +22,6 @@ const Users = () => {
       phone: '53 348 963',
       email: 'Aymen@gmail.com',
       gender: 'M',
-      n_students: 41,
     },
     {
       firstName: 'Fatma',
@@ -31,7 +29,6 @@ const Users = () => {
       phone: '55 148 473',
       email: 'Fatma@gmail.com',
       gender: 'F',
-      n_students: 12,
     },
     {
       firstName: 'Walid',
@@ -39,7 +36,6 @@ const Users = () => {
       phone: '99 486 324',
       email: 'walid@gmail.com',
       gender: 'M',
-      n_students: 21,
     },
     {
       firstName: 'Tawfik',
@@ -47,7 +43,6 @@ const Users = () => {
       phone: '22 475 968',
       email: 'tawfik@gmail.com',
       gender: 'M',
-      n_students: 8,
     },
   ];
 
@@ -78,48 +73,25 @@ const Users = () => {
       key: 'gender',
     },
     {
-      title: ' Number Of Students',
-      dataIndex: 'n_students',
-      key: 'n_students',
-    },
-    {
       title: 'Action',
-      key: 'action',
+      key: 'Action',
       render: (text: any, record: any) => (
-        <Space>
-          <Button
-          // onClick={() => {
-          //   setEditedMeet(record);
-          //   setIsMeetModalOpen(true);
-          // }}
-          >
+        <div className="space-x-3">
+          <Button>
             <FiMessageCircle />
           </Button>
-          <Button
-            type="primary"
-            danger
-            // onClick={() => {
-            //   modal.confirm({
-            //     title: "Are you sure you want to delete this child?",
-            //     onOk: async () => {
-            //       await axios.delete(`/child/${record._id}`);
-            //       await mutate("/child");
-            //       message.success("Child deleted successfully");
-            //     },
-            //   });
-            // }}
-          >
+          <Button danger type="primary">
             Delete
           </Button>
-        </Space>
+        </div>
       ),
     },
   ];
 
   return (
-    <div className="p-4 space-x-3">
+    <div className="p-4">
       <div>
-        <h1 className="text-xl">Teachers</h1>
+        <h1 className="text-xl">Mentors</h1>
       </div>
 
       <Table dataSource={data} columns={columns} />
@@ -127,4 +99,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Mentors;
