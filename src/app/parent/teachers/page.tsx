@@ -47,8 +47,8 @@ const Users = () => {
 
       <Table
         dataSource={[
-          { firstName: 'teacher', lastName: 'teacher', child: 'child' },
-          { firstName: 'teacher', lastName: 'teacher', child: 'child' },
+          { firstName: 'Samir', lastName: 'Chatbori', child: 'Walid' },
+          { firstName: 'Mohamed', lastName: 'Dhia', child: 'Ahmed' },
         ]}
         columns={columns}
       />

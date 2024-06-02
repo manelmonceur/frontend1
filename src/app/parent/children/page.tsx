@@ -17,7 +17,19 @@ const Users = () => {
   const [isChildModalOpen, setIsChildModalOpen] = useState(false);
   const [editedChild, setEditedChild] = useState<Child>();
 
-  const { data: children } = useSWR<Child[]>('/child', fetcher);
+  // const { data: children } = useSWR<Child[]>('/child', fetcher);
+  const children = [
+    {
+      firstName: 'Ahmed',
+      lastName: 'Ben Hmida',
+      class: '1 er',
+    },
+    {
+      firstName: 'Walid',
+      lastName: 'Labyedh',
+      class: '6 eme',
+    },
+  ];
 
   const { setSelectChild } = useParentStore();
 

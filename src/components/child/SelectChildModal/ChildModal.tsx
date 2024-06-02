@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import axios from "@/utils/axios";
-import { Form, Input, Modal } from "antd";
-import React, { FC, useState } from "react";
-import { mutate } from "swr";
-import { Child } from "../../../../types/api";
+import axios from '@/utils/axios';
+import { Form, Input, Modal } from 'antd';
+import React, { FC, useState } from 'react';
+import { mutate } from 'swr';
+import { Child } from '../../../../types/api';
 
 interface Props {
   isOpen: boolean;
@@ -20,8 +20,8 @@ const AddChildModal: FC<Props> = ({ isOpen, editedChild, setIsOpen }) => {
       title="Select a child"
       open={isOpen}
       onCancel={() => setIsOpen(false)}
-      okText={editedChild ? "Edit" : "Add"}
-      okButtonProps={{ loading, form: "AddChildForm", htmlType: "submit" }}
+      okText={editedChild ? 'Edit' : 'Add'}
+      okButtonProps={{ loading, form: 'AddChildForm', htmlType: 'submit' }}
       destroyOnClose={true}
     >
       <AddChildForm
@@ -52,8 +52,8 @@ const AddChildForm: FC<PropsForm> = ({
     setLoading(true);
     try {
       if (editedChild) await axios.put(`/child/${editedChild._id}`, values);
-      else await axios.post("/child", values);
-      await mutate("/child");
+      else await axios.post('/child', values);
+      await mutate('/child');
       setIsOpen(false);
     } catch (error) {
       console.log(error);
@@ -69,29 +69,50 @@ const AddChildForm: FC<PropsForm> = ({
       onFinish={onFinish}
       layout="vertical"
       onFinishFailed={(errorInfo) => {
-        console.log("Failed:", errorInfo);
+        console.log('Failed:', errorInfo);
       }}
     >
       <Form.Item
         label="First name"
         name="firstName"
-        rules={[{ required: true, message: "First name is required" }]}
+        rules={[{ required: true, message: 'First name is required' }]}
       >
         <Input placeholder="First name" />
       </Form.Item>
       <Form.Item
         label="Last name"
         name="lastName"
-        rules={[{ required: true, message: "Last name is required" }]}
+        rules={[{ required: true, message: 'Last name is required' }]}
       >
         <Input placeholder="Last name" />
       </Form.Item>
       <Form.Item
         label="Class"
         name="class"
-        rules={[{ required: true, message: "Class is required" }]}
+        rules={[{ required: true, message: 'Class is required' }]}
       >
         <Input placeholder="Class" />
+      </Form.Item>
+      <Form.Item
+        label="Gender"
+        name="gender"
+        rules={[{ required: true, message: 'Gender is required' }]}
+      >
+        <Input placeholder="M or F" />
+      </Form.Item>
+      <Form.Item
+        label="Date of birth"
+        name="date"
+        rules={[{ required: true, message: 'date is required' }]}
+      >
+        <Input placeholder="Date of birth" type="date" />
+      </Form.Item>
+      <Form.Item
+        label="Special Needs"
+        name="notes"
+        rules={[{ required: true, message: 'notes is required' }]}
+      >
+        <Input placeholder="Special Needs" />
       </Form.Item>
     </Form>
   );
