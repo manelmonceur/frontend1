@@ -16,6 +16,7 @@ const Dashboard = () => {
       <CardDashboard title="Teachers" value={50} />
       <CardDashboard title="Courses" value={10} />
       <CardDashboard title="Classes" value={20} />
+      <CardDashboard title="Admins" value={Users?.length} />
     </div>
   );
 };

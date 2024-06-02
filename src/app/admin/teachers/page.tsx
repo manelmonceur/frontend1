@@ -1,13 +1,28 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 import { fetcher } from '../../../../utils/fetcher';
-import { Table } from 'antd';
+import { Modal, Table } from 'antd';
 import { Button, Space } from 'antd';
 import { FiMessageCircle } from 'react-icons/fi';
 
+import {
+  Heading,
+  Avatar,
+  Box,
+  Center,
+  Text,
+  Stack,
+  Button as Btn,
+  useColorModeValue,
+  AvatarBadge,
+} from '@chakra-ui/react';
+
 const Users = () => {
+  const [teacher, setTeacher] = useState(null);
+  const [open, setOpen] = useState(false);
+
   const data = [
     {
       firstName: 'Ahmed',
@@ -53,14 +68,9 @@ const Users = () => {
 
   const columns = [
     {
-      title: 'FirstName',
+      title: 'Name',
       dataIndex: 'firstName',
       key: 'firstName',
-    },
-    {
-      title: 'LastName',
-      dataIndex: 'lastName',
-      key: 'lastName',
     },
     {
       title: 'Phone',
@@ -111,6 +121,7 @@ const Users = () => {
           >
             Delete
           </Button>
+          <Button onClick={() => setOpen(true)}>Details</Button>
         </Space>
       ),
     },
@@ -123,8 +134,61 @@ const Users = () => {
       </div>
 
       <Table dataSource={data} columns={columns} />
+      <ModalProfile open={open} close={() => setOpen(false)} user={teacher} />
     </div>
   );
 };
 
 export default Users;
+
+const ModalProfile = ({ open, close, user }) => {
+  return (
+    <Modal title="Profile" open={open} onCancel={close} footer={null}>
+      <Box
+        maxW={'520px'}
+        w={'full'}
+        className="profile-card"
+        boxShadow={'2xl'}
+        rounded={'lg'}
+        gap={4}
+        display={'flex'}
+        flexDirection={'column'}
+        alignItems={'center'}
+        p={6}
+        textAlign={'center'}
+      >
+        <Avatar>
+          <AvatarBadge boxSize="1.25em" bg="green.500" />
+        </Avatar>
+
+        <Heading fontSize={'2xl'} fontFamily={'body'}>
+          John Doe
+        </Heading>
+        <Text fontWeight={600} color={'gray.500'} mb={4}>
+          @johndoe
+        </Text>
+        <Text
+          textAlign={'center'}
+          color={useColorModeValue('gray.700', 'gray.400')}
+          px={3}
+        >
+          exemple@gmail.com
+        </Text>
+        <Text
+          textAlign={'center'}
+          color={useColorModeValue('gray.700', 'gray.400')}
+          px={3}
+        >
+          +216 22 333 444
+        </Text>
+        <Text
+          textAlign={'center'}
+          color={useColorModeValue('gray.700', 'gray.400')}
+          px={3}
+        >
+          Male
+        </Text>
+      </Box>
+    </Modal>
+  );
+};

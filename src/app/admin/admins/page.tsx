@@ -10,14 +10,9 @@ const Users = () => {
 
   const columns = [
     {
-      title: 'FirstName',
+      title: 'Name',
       dataIndex: 'firstName',
       key: 'firstName',
-    },
-    {
-      title: 'LastName',
-      dataIndex: 'lastName',
-      key: 'lastName',
     },
     {
       title: 'Phone',
@@ -30,9 +25,9 @@ const Users = () => {
       key: 'email',
     },
     {
-      title: 'Role',
-      dataIndex: 'role',
-      key: 'role',
+      title: 'Gender',
+      dataIndex: 'gender',
+      key: 'gender',
     },
   ];
 
@@ -42,7 +37,10 @@ const Users = () => {
         <h1 className="text-xl">Admins</h1>
       </div>
 
-      <Table dataSource={data?.filter((user)=>user.role==="admin")} columns={columns} />
+      <Table
+        dataSource={data?.filter((user) => user.role === 'admin')}
+        columns={columns}
+      />
     </div>
   );
 };

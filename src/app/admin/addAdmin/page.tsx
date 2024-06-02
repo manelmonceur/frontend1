@@ -62,6 +62,13 @@ const AddAdmin = () => {
           <Input type="email" className="w-[400px]" />
         </Form.Item>
         <Form.Item
+          label="Gender"
+          name="gender"
+          rules={[{ required: true, message: 'Please input your gender!' }]}
+        >
+          <Input type="text" className="w-[400px]" />
+        </Form.Item>
+        <Form.Item
           label="Password"
           name="password"
           rules={[{ required: true, message: 'Please input your password!' }]}

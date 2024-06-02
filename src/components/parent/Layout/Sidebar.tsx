@@ -69,13 +69,6 @@ export default function Sidebar() {
         <NavItem
           navSize={navSize}
           icon={MdHomeFilled}
-          title="Dashboard"
-          active={path == '/parent' ? true : false}
-          url="/parent"
-        />
-        <NavItem
-          navSize={navSize}
-          icon={MdHomeFilled}
           title="Children"
           active={path == '/parent/children' ? true : false}
           url="/parent/children"
@@ -138,7 +131,7 @@ export default function Sidebar() {
           </MenuButton>
           <MenuList>
             <MenuItem onClick={() => router.push('/parent/profile')} gap={2}>
-              <MdPersonOutline size={20} /> Profile
+              <MdPersonOutline size={20} /> Account Details
             </MenuItem>
             <MenuDivider />
 
@@ -150,7 +143,7 @@ export default function Sidebar() {
               }}
             >
               <MdLockOutline size={20} />
-              Logout
+              Log out
             </MenuItem>
           </MenuList>
         </Menu>

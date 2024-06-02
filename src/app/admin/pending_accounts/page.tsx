@@ -32,14 +32,9 @@ const Users = () => {
 
   const columns = [
     {
-      title: 'FirstName',
+      title: 'Name',
       dataIndex: 'firstName',
       key: 'firstName',
-    },
-    {
-      title: 'LastName',
-      dataIndex: 'lastName',
-      key: 'lastName',
     },
     {
       title: 'Phone',

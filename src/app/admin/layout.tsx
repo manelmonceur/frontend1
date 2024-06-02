@@ -3,6 +3,7 @@ import '../globals.css';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Box, Flex } from '@chakra-ui/react';
 
 export const metadata: Metadata = {
   title: 'PFE',
@@ -15,9 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="grid grid-cols-12 bg-white">
-      <Navbar />
-      <main className="col-span-10">{children}</main>
-    </div>
+    <>
+      <Flex w="100%" bg={'gray.100'} h={'100vh'}>
+        <Navbar />
+        <Box w={'100%'} px={'20px'} h={'100vh'} overflow={'auto'}>
+          {children}
+        </Box>
+      </Flex>
+    </>
   );
 }
