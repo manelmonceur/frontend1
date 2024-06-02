@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { HiUserPlus } from 'react-icons/hi2';
+import { AiOutlineCreditCard } from 'react-icons/ai';
 import { MdMissedVideoCall } from 'react-icons/md';
 import { RiParentLine } from 'react-icons/ri';
 import { FiMessageCircle } from 'react-icons/fi';
@@ -144,6 +145,18 @@ const Navbar = () => {
                   <HiUserPlus size={24} />
                   <span className="ml-3 flex-1 whitespace-nowrap text-gray-300 hover:text-gray-800">
                     Add User
+                  </span>
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/admin/payments"
+                  className="text-base text-gray-300 font-normal rounded-lg hover:bg-gray-100 hover:text-gray-800 flex items-center p-2 group "
+                >
+                  <AiOutlineCreditCard size={24} />
+                  <span className="ml-3 flex-1 whitespace-nowrap text-gray-300 hover:text-gray-800">
+                    Payments
                   </span>
                 </Link>
               </li>
