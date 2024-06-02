@@ -4,10 +4,11 @@ const HerosSection = () => {
   return (
     <div className="bg-[url('/bgHeero.jpg')] bg-cover bg-no-repeat">
       <div className="hero  text-center md:text-left py-28  bg-[#000000cc] flex items-center justify-center flex-col">
-        <h1 className="text-white shadow">Learn to Code</h1>
+        <h1 className="text-white shadow">
+          Find the Perfect Tutor for Your Child
+        </h1>
         <p className="lead max-w-lg mx-auto md:mx-0 text-white shadow mb-12">
-          Business, Technology and Creative Skills taught by industry experts.
-          Explore a wide range of skills with our professional tutorials.
+          Discover a world of personalized learning with our expert tutors.
         </p>
 
         <a

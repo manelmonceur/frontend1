@@ -14,7 +14,7 @@ const Cours = () => {
     <section className="py-24 bg-gray-100 ">
       <div className=" px-4 sm:px-6 lg:px-8">
         <h2 className="font-manrope text-4xl font-bold text-gray-900 text-center mb-14">
-          Our Teacher
+          Our Teachers
         </h2>
         <div className="flex gap-3 py-2">
           <Card />
