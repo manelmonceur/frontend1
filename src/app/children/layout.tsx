@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <Flex w="100%" h={'100vh'}>
       <Sidebar />
-      <Box w={'100%'} px={'200px'} h={'100vh'} overflow={'auto'}>
+      <Box w={'100%'} px={'20px'} h={'100vh'} overflow={'auto'}>
         {children}
       </Box>
     </Flex>

@@ -9,15 +9,46 @@ import { fetcher } from '../../../../utils/fetcher';
 const Users = () => {
   // const { data: courses } = useSWR<Course[]>('/course', fetcher);
   const courses = [
-    { name: 'course', path: 'path' },
-    { name: 'course', path: 'path' },
+    {
+      name: 'Chapter 2',
+      subject: 'Math',
+      link: 'https://math.com/221',
+      author: 'Mr Samir Chatbori',
+    },
+    {
+      name: 'First subject',
+      subject: 'English',
+      link: 'https://EN.com/554',
+      author: 'Mr Ahmed midoun',
+    },
+    {
+      name: 'Gravity chapter 3',
+      subject: 'Physique',
+      link: 'https://phy.com/221',
+      author: 'Mr Jamil ben amor',
+    },
   ];
 
-  const columns = [
+  const columns: any = [
     {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
+    },
+    {
+      title: 'Subject',
+      dataIndex: 'subject',
+      key: 'subject',
+    },
+    {
+      title: 'Link',
+      dataIndex: 'link',
+      key: 'link',
+    },
+    {
+      title: 'Published By',
+      dataIndex: 'author',
+      key: 'author',
     },
     {
       title: 'Action',
