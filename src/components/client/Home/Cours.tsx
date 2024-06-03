@@ -8,10 +8,30 @@ const Cours = () => {
           Our popular blogs
         </h2>
         <div className="flex gap-2 py-2">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card
+            id={1}
+            description={
+              'Simplifying Student Loan Management with Fintech: Alleviating Educational Debt Stress'
+            }
+          />
+          <Card
+            id={2}
+            description={
+              'Innovative Fintech Approaches to Student Loans: Reducing the Financial Strain of Education'
+            }
+          />
+          <Card
+            id={3}
+            description={
+              'Fintech Innovations in Student Lending: Mitigating the Impact of Education Debt'
+            }
+          />
+          <Card
+            id={4}
+            description={
+              'Modern Fintech Strategies for Student Loans: Lightening the Load of Educational Debt'
+            }
+          />
         </div>
         <a
           href="javascript:;"
@@ -27,20 +47,19 @@ const Cours = () => {
 export default Cours;
 
 //
-const Card = () => {
+const Card = ({ id, description }) => {
   return (
     <div className="group cursor-pointer w-full max-lg:max-w-xl lg:w-1/3 border border-gray-300 rounded-2xl p-5 transition-all duration-300 hover:border-indigo-600">
       <div className="flex items-center mb-6">
         <img
-          src="https://pagedone.io/asset/uploads/1696244619.png"
+          src={'https://picsum.photos/id/' + id + '/400/300'}
           alt="Alexa image"
           className="rounded-lg w-full"
         />
       </div>
       <div className="block">
         <h4 className="text-gray-900 font-medium leading-8 mb-9">
-          Fintech Solutions for Student Loans: Easing the Burden of Education
-          Debt
+          {description}
         </h4>
         <div className="flex items-center justify-between  font-medium">
           <h6 className="text-sm text-gray-500">By Alexa H.</h6>

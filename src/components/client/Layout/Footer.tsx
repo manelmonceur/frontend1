@@ -2,12 +2,14 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="relative bg-gray-200 pt-8 pb-6">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap text-left lg:text-left">
-          <div className="w-full lg:w-6/12 px-4">
-            <h5 className="text-lg mt-0 mb-2 text-blueGray-600 flex space-x-6">
-              FIND US ON ANY OF THESE PLATFORMS
+    <footer className="relative bg-gray-200 pt-8 pb-6 w-full">
+      <div className="container mx-auto px-4 w-full">
+        <div className="flex flex-wrap text-left lg:text-left w-full">
+          <div className="w-full px-4">
+            <h5 className="text-lg mt-0 mb-2 text-blueGray-600 space-x-6 flex justify-between w-full ">
+              <p>FIND US ON ANY OF THESE PLATFORMS</p>
+            </h5>
+            <div className="flex space-x-2 justify-end">
               <svg
                 width="800px"
                 height="800px"
@@ -53,7 +55,7 @@ const Footer = () => {
                   fill="#000000"
                 />
               </svg>
-            </h5>
+            </div>
             <h5 className="text-lg mt-0 mb-2 text-blueGray-600 flex space-x-6">
               Contact us: +1 (312) 000 000
             </h5>
