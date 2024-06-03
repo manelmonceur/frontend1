@@ -3,7 +3,7 @@
 import React from 'react';
 import useSWR from 'swr';
 import { fetcher } from '../../../../utils/fetcher';
-import { Table } from 'antd';
+import { Button, Space, Table } from 'antd';
 
 const Users = () => {
   const { data } = useSWR('/user', fetcher);
@@ -28,6 +28,17 @@ const Users = () => {
       title: 'Gender',
       dataIndex: 'gender',
       key: 'gender',
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (text: any, record: any) => (
+        <Space>
+          <Button type="primary" danger>
+            Delete
+          </Button>
+        </Space>
+      ),
     },
   ];
 

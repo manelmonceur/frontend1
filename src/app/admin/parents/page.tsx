@@ -59,15 +59,6 @@ const Users = () => {
       key: 'email',
     },
     {
-      title: 'Meet Range',
-      key: 'meetRange',
-      render: (text: any, record: any) => (
-        <span>
-          {record.dateRange[0]} - {record.dateRange[1]}
-        </span>
-      ),
-    },
-    {
       title: 'Action',
       key: 'action',
       render: (text: any, record: any) => (
@@ -116,6 +107,16 @@ const ModalProfile = ({ open, close, user }) => {
       key: 'name',
     },
     {
+      title: 'Gender',
+      dataIndex: 'gender',
+      key: 'gender',
+    },
+    {
+      title: 'Grad',
+      dataIndex: 'grad',
+      key: 'grad',
+    },
+    {
       title: 'Teacher Name',
       dataIndex: 'teacher',
       key: 'teacher',
@@ -132,11 +133,15 @@ const ModalProfile = ({ open, close, user }) => {
       name: 'Ahmed',
       teacher: 'Walid',
       teacher_email: 'walid@gmail.com',
+      gender: 'Male',
+      grad: '3 eme',
     },
     {
       name: 'Tawfik',
       teacher: 'Walid',
       teacher_email: 'walid@gmail.com',
+      gender: 'Male',
+      grad: '5 eme',
     },
   ];
   return (

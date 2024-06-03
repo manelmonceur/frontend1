@@ -107,8 +107,8 @@ const AddAdmin = () => {
                 label: 'teacher',
               },
               {
-                value: 'student',
-                label: 'student',
+                value: 'mentor',
+                label: 'mentor',
               },
             ]}
             onChange={(value) => setRole(value)}

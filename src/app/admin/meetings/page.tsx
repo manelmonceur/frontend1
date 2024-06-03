@@ -20,6 +20,19 @@ const Meetings = () => {
     fetchMeetings();
   }, []);
 
+  const _data = [
+    {
+      name: 'meeting',
+      mentor: 'Ahmed ben Ahmida',
+      mentor_email: 'ahmed@gmail.com',
+      parent: 'Walid',
+      parent_email: 'walid@gmail.com',
+      admin: 'yassin',
+      admin_email: 'yassin@gmail.com',
+      date: '22/02/2024',
+    },
+  ];
+
   const columns = [
     {
       title: 'name',
@@ -32,27 +45,47 @@ const Meetings = () => {
       key: 'mentor',
     },
     {
+      title: 'Mentor Email',
+      dataIndex: 'mentor_email',
+      key: 'mentor_email',
+    },
+    {
       title: 'Parent',
       dataIndex: 'parent',
       key: 'parent',
+    },
+    {
+      title: 'Parent Email',
+      dataIndex: 'parent_email',
+      key: 'parent_email',
+    },
+    {
+      title: 'Admin',
+      dataIndex: 'admin',
+      key: 'admin',
+    },
+    {
+      title: 'Admin Email',
+      dataIndex: 'admin_email',
+      key: 'admin_email',
     },
     {
       title: 'Date',
       dataIndex: 'date',
       key: 'date',
     },
-    // {
-    //   title: 'Action',
-    //   key: 'action',
-    //   render: (text: any, record: any) => (
-    //     <Space>
-    //       <Button>Edit</Button>
-    //       <Button type="primary" danger>
-    //         Delete
-    //       </Button>
-    //     </Space>
-    //   ),
-    // },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (text: any, record: any) => (
+        <Space>
+          <Button>Edit</Button>
+          <Button type="primary" danger>
+            Delete
+          </Button>
+        </Space>
+      ),
+    },
   ];
 
   return (
@@ -72,7 +105,7 @@ const Meetings = () => {
         </Button>
       </div>
 
-      <Table dataSource={data} columns={columns} />
+      <Table dataSource={_data} columns={columns} />
       <ModalAddMeeting
         open={open}
         close={() => setOpen(false)}
@@ -162,6 +195,13 @@ const ModalAddMeeting = ({ open, close, fetchData }) => {
             />
           </Form.Item>
           <Form.Item
+            label="Parent Email"
+            name="parent_email"
+            rules={[{ required: true, message: 'Please input Name!' }]}
+          >
+            <Input className="!w-[400px]" />
+          </Form.Item>
+          <Form.Item
             label="Select Mentor"
             name={'mentor'}
             rules={[{ required: true, message: 'Please input Select Mentor!' }]}
@@ -199,6 +239,27 @@ const ModalAddMeeting = ({ open, close, fetchData }) => {
               ]}
               onChange={(value) => setRole(value)}
             />
+          </Form.Item>
+          <Form.Item
+            label="Mentor Email"
+            name="mentor_email"
+            rules={[{ required: true, message: 'Please input Name!' }]}
+          >
+            <Input className="!w-[400px]" />
+          </Form.Item>
+          <Form.Item
+            label="Admin"
+            name="Admin"
+            rules={[{ required: true, message: 'Please input Name!' }]}
+          >
+            <Input className="!w-[400px]" />
+          </Form.Item>
+          <Form.Item
+            label="Admin Email"
+            name="Admin_email"
+            rules={[{ required: true, message: 'Please input Name!' }]}
+          >
+            <Input className="!w-[400px]" />
           </Form.Item>
           <Form.Item
             label="Date"

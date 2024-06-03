@@ -47,6 +47,13 @@ const Users = () => {
       key: 'email',
     },
     {
+      title: 'Gender',
+      key: 'gender',
+      render: (text: any, record: any) => {
+        return 'Male';
+      },
+    },
+    {
       title: 'Meet Range',
       key: 'meetRange',
       render: (text: any, record: any) => (

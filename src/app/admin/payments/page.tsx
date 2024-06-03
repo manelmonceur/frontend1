@@ -10,27 +10,49 @@ const Payments = () => {
 
   const data = [
     {
-      teacher: 'Mr Ahmed ben Sasi',
-      child: 'Walid labiedh',
-      amount: '30dt',
+      _id: '1',
+      teacher: 'teacher1',
+      teacher_email: 'ahmed@gmail.com',
+      parent: 'Tawfik',
+      parent_email: 'tawfik@gmail.com',
+      child: 'child1',
+      formation: 'Math',
+      amount: '50dt',
+      date: '22/07/2023',
     },
     {
-      teacher: 'Mr Jasser ben Ali',
-      child: 'Maisa tounsi',
+      _id: '2',
+      teacher: 'teacher2',
+      teacher_email: 'walid@gmail.com',
+      parent: 'Tawfik',
+      parent_email: 'tawfik@gmail.com',
+      child: 'child2',
+      formation: 'Science',
       amount: '100dt',
-    },
-    {
-      teacher: 'Mr Samir Chatbori',
-      child: 'Rayen gharbi',
-      amount: '350dt',
+      date: '03/01/2023',
     },
   ];
 
   const columns = [
     {
+      title: 'Parent Name',
+      dataIndex: 'parent',
+      key: 'parent',
+    },
+    {
+      title: 'Parent Email',
+      dataIndex: 'parent_email',
+      key: 'parent_email',
+    },
+    {
       title: 'Teacher',
       dataIndex: 'teacher',
       key: 'teacher',
+    },
+    {
+      title: 'Teacher Email',
+      dataIndex: 'teacher_email',
+      key: 'teacher_email',
     },
     {
       title: 'Child',
@@ -38,42 +60,52 @@ const Payments = () => {
       key: 'child',
     },
     {
+      title: 'Formation',
+      dataIndex: 'formation',
+      key: 'formation',
+    },
+    {
       title: 'Amount',
       dataIndex: 'amount',
       key: 'amount',
     },
     {
-      title: 'Action',
-      key: 'action',
-      render: (text: any, record: any) => (
-        <Space>
-          <Button
-          // onClick={() => {
-          //   setEditedMeet(record);
-          //   setIsMeetModalOpen(true);
-          // }}
-          >
-            Edit
-          </Button>
-          <Button
-            type="primary"
-            danger
-            // onClick={() => {
-            //   modal.confirm({
-            //     title: "Are you sure you want to delete this child?",
-            //     onOk: async () => {
-            //       await axios.delete(`/child/${record._id}`);
-            //       await mutate("/child");
-            //       message.success("Child deleted successfully");
-            //     },
-            //   });
-            // }}
-          >
-            Delete
-          </Button>
-        </Space>
-      ),
+      title: 'Date',
+      dataIndex: 'date',
+      key: 'date',
     },
+    // {
+    //   title: 'Action',
+    //   key: 'action',
+    //   render: (text: any, record: any) => (
+    //     <Space>
+    //       <Button
+    //       // onClick={() => {
+    //       //   setEditedMeet(record);
+    //       //   setIsMeetModalOpen(true);
+    //       // }}
+    //       >
+    //         Edit
+    //       </Button>
+    //       <Button
+    //         type="primary"
+    //         danger
+    //         // onClick={() => {
+    //         //   modal.confirm({
+    //         //     title: "Are you sure you want to delete this child?",
+    //         //     onOk: async () => {
+    //         //       await axios.delete(`/child/${record._id}`);
+    //         //       await mutate("/child");
+    //         //       message.success("Child deleted successfully");
+    //         //     },
+    //         //   });
+    //         // }}
+    //       >
+    //         Delete
+    //       </Button>
+    //     </Space>
+    //   ),
+    // },
   ];
 
   return (
@@ -81,7 +113,7 @@ const Payments = () => {
       <div>
         <h1 className="text-xl">Payments</h1>
         <div className="flex justify-end">
-          <Button
+          {/* <Button
             type="primary"
             onClick={() => {
               setOpen(true);
@@ -103,7 +135,7 @@ const Payments = () => {
               />
             </svg>
             Add Payment
-          </Button>
+          </Button> */}
         </div>
       </div>
 
