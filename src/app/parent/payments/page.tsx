@@ -20,14 +20,20 @@ const Users = () => {
     {
       _id: '1',
       teacher: 'teacher1',
+      teacher_email: 'ahmed@gmail.com',
       child: 'child1',
+      formation: 'Math',
       amount: '50dt',
+      date: '22/07/2023',
     },
     {
       _id: '2',
       teacher: 'teacher2',
+      teacher_email: 'walid@gmail.com',
       child: 'child2',
+      formation: 'Science',
       amount: '100dt',
+      date: '03/01/2023',
     },
   ];
 
@@ -38,14 +44,29 @@ const Users = () => {
       key: 'firstName',
     },
     {
+      title: 'Teacher Email',
+      dataIndex: 'teacher_email',
+      key: 'teacher_email',
+    },
+    {
       title: 'Child',
       dataIndex: 'child',
       key: 'child',
     },
     {
+      title: 'Formation',
+      dataIndex: 'formation',
+      key: 'formation',
+    },
+    {
       title: 'Amount',
       dataIndex: 'amount',
       key: 'amount',
+    },
+    {
+      title: 'Date',
+      dataIndex: 'date',
+      key: 'date',
     },
     {
       title: 'Action',

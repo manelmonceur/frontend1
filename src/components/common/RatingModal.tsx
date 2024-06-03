@@ -14,7 +14,7 @@ const RatingModal: FC<UpdateProfileProps> = ({ isOpen, close }) => {
       <Form
         layout="vertical"
         name="nest-messages"
-        className="pt-10 flex justify-center"
+        className="pt-10 flex flex-col justify-center"
         style={{ maxWidth: 600 }}
       >
         <Form.Item
@@ -23,6 +23,10 @@ const RatingModal: FC<UpdateProfileProps> = ({ isOpen, close }) => {
           rules={[{ required: true, message: 'Rate is required' }]}
         >
           <Rate character={<IoIosStar size={40} />} />
+        </Form.Item>
+
+        <Form.Item label="Description" name="description">
+          <Input placeholder="description" className="!w-full" />
         </Form.Item>
       </Form>
     </Modal>

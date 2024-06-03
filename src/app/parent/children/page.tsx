@@ -20,13 +20,13 @@ const Users = () => {
   // const { data: children } = useSWR<Child[]>('/child', fetcher);
   const children = [
     {
-      firstName: 'Ahmed',
-      lastName: 'Ben Hmida',
+      firstName: 'Ahmed Ben Hmida',
+      lastName: '',
       class: '1 er',
     },
     {
-      firstName: 'Walid',
-      lastName: 'Labyedh',
+      firstName: 'Walid Labyedh',
+      lastName: '',
       class: '6 eme',
     },
   ];
@@ -35,19 +35,9 @@ const Users = () => {
 
   const columns = [
     {
-      title: 'First name',
+      title: 'Name',
       dataIndex: 'firstName',
       key: 'firstName',
-    },
-    {
-      title: 'Last name',
-      dataIndex: 'lastName',
-      key: 'lastName',
-    },
-    {
-      title: 'Class',
-      dataIndex: 'class',
-      key: 'class',
     },
     {
       title: 'Action',
@@ -61,14 +51,6 @@ const Users = () => {
             }}
           >
             Navigate
-          </Button>
-          <Button
-            onClick={() => {
-              setEditedChild(record);
-              setIsChildModalOpen(true);
-            }}
-          >
-            Edit
           </Button>
           <Button
             type="primary"

@@ -69,18 +69,7 @@ export default function Profile() {
           color={useColorModeValue('gray.700', 'gray.400')}
           px={3}
         >
-          10 ans d&apos;experience
-        </Text>
-
-        <Text
-          textAlign={'center'}
-          color={useColorModeValue('gray.700', 'gray.400')}
-          px={3}
-        >
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum.
+          Male
         </Text>
 
         <Stack mt={8} direction={'row'} spacing={4}>

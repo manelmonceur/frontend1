@@ -79,12 +79,20 @@ const AddPaymentForm: FC<PropsForm> = ({
       >
         <Select
           options={[
-            { label: 'Teacher1', value: 'teacher1' },
-            { label: 'Teacher2', value: 'teacher2' },
+            { label: 'Ahmed', value: 'teacher1' },
+            { label: 'Walid', value: 'teacher2' },
           ]}
           placeholder="Teacher"
         />
       </Form.Item>
+      <Form.Item
+        label="Teacher Email"
+        name="teacher_email"
+        rules={[{ required: true, message: 'Teacher email' }]}
+      >
+        <Input placeholder="Teacher Email" type="text" />
+      </Form.Item>
+
       <Form.Item
         label="Child"
         name="child"
@@ -98,7 +106,13 @@ const AddPaymentForm: FC<PropsForm> = ({
           placeholder="Child"
         />
       </Form.Item>
-
+      <Form.Item
+        label="Formation"
+        name="formation"
+        rules={[{ required: true, message: 'Formation' }]}
+      >
+        <Input placeholder="Formation" type="text" />
+      </Form.Item>
       <Form.Item
         label="Amount"
         name="amount"

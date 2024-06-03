@@ -101,6 +101,13 @@ export default function Sidebar() {
           active={path == '/parent/message' ? true : false}
           url="/parent/message"
         />
+        <NavItem
+          navSize={navSize}
+          icon={MdOutlineQuiz}
+          title="Rating"
+          active={path == '/parent/rating' ? true : false}
+          url="/parent/rating"
+        />
       </Flex>
 
       <Flex

@@ -32,7 +32,7 @@ const Users = () => {
         <Space>
           <Button type="default">Message</Button>
           <Button type="primary" onClick={() => setIsOpeenRate(true)}>
-            Rating
+            Rate
           </Button>
         </Space>
       ),

@@ -1,5 +1,4 @@
 'use client';
-import UpdateProfile from '@/components/parent/Modal/UpdateProfile';
 import {
   Heading,
   Avatar,
@@ -11,12 +10,11 @@ import {
   useColorModeValue,
   AvatarBadge,
 } from '@chakra-ui/react';
-import { useState } from 'react';
-import { CiEdit, CiLogout } from 'react-icons/ci';
 
-export default function Profile() {
-  const [isOpeen, setIsOpeen] = useState(false);
+import { Form, Input, InputNumber, Rate } from 'antd';
+import { IoIosStar } from 'react-icons/io';
 
+export default function Ratting() {
   return (
     <Center py={6}>
       <Box
@@ -32,38 +30,31 @@ export default function Profile() {
         p={6}
         textAlign={'center'}
       >
-        <Avatar>
-          <AvatarBadge boxSize="1.25em" bg="green.500" />
-        </Avatar>
-
         <Heading fontSize={'2xl'} fontFamily={'body'}>
-          John Doe
+          Give feedback
         </Heading>
         <Text fontWeight={600} color={'gray.500'} mb={4}>
-          @johndoe
-        </Text>
-        <Text
-          textAlign={'center'}
-          color={useColorModeValue('gray.700', 'gray.400')}
-          px={3}
-        >
-          exemple@gmail.com
-        </Text>
-        <Text
-          textAlign={'center'}
-          color={useColorModeValue('gray.700', 'gray.400')}
-          px={3}
-        >
-          +216 22 333 444
+          What do you think ?
         </Text>
 
-        <Text
-          textAlign={'center'}
-          color={useColorModeValue('gray.700', 'gray.400')}
-          px={3}
+        <Form
+          layout="vertical"
+          name="nest-messages"
+          className="pt-10 flex flex-col justify-center"
+          style={{ maxWidth: 600 }}
         >
-          Male
-        </Text>
+          <Form.Item
+            name={'rate'}
+            required
+            rules={[{ required: true, message: 'Rate is required' }]}
+          >
+            <Rate character={<IoIosStar size={40} />} className="!flex"/>
+          </Form.Item>
+
+          <Form.Item label="Description" name="description">
+            <Input placeholder="description" className="!w-full" />
+          </Form.Item>
+        </Form>
 
         <Stack mt={8} direction={'row'} spacing={4}>
           <Button
@@ -82,10 +73,8 @@ export default function Profile() {
               bg: 'blue.500',
             }}
             className="flex items-center justify-center gap-2"
-            onClick={() => setIsOpeen(true)}
           >
-            <CiEdit size={24} />
-            Update
+            Send
           </Button>
           <Button
             flex={1}
@@ -104,11 +93,10 @@ export default function Profile() {
             }}
             className="flex items-center justify-center gap-2"
           >
-            Delete Account
+            Cancel
           </Button>
         </Stack>
       </Box>
-      <UpdateProfile isOpen={isOpeen} close={() => setIsOpeen(false)} />
     </Center>
   );
 }
