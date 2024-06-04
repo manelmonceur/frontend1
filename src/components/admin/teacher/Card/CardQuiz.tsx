@@ -61,7 +61,7 @@ const CardQuiz: FC<Props> = ({ item, subscribe }) => {
                 <CardFooter>
                     {' '}
                     <Link href={`/user/quizDetail?quizId=${item?.id}`}>
-                        Consulter
+                        Consult
                     </Link>
                 </CardFooter>
             </Card>

@@ -12,25 +12,25 @@ const QuizModal = ({ isOpen, setIsOpen }) => {
             <Radio value="Response3">14</Radio>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="Which planet is known as the Red Planet?">
+        <Form.Item label="What shape has 3 sides?">
           <Radio.Group className="flex flex-col">
-            <Radio value="Response1">Mars</Radio>
-            <Radio value="Response2">Jupiter</Radio>
-            <Radio value="Response3">Venus</Radio>
+            <Radio value="Response1">Square</Radio>
+            <Radio value="Response2">Circle</Radio>
+            <Radio value="Response3">Triangle</Radio>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="Who was the first President of the United States?">
+        <Form.Item label="Which of the following is a fraction?">
           <Radio.Group className="flex flex-col">
-            <Radio value="Response1">Abraham Lincoln</Radio>
-            <Radio value="Response2">George Washington</Radio>
-            <Radio value="Response3">Thomas Jefferson</Radio>
+            <Radio value="Response1">0.5</Radio>
+            <Radio value="Response2">1/2</Radio>
+            <Radio value="Response3">2</Radio>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="Which artist painted the Mona Lisa?">
+        <Form.Item label="If a pizza is cut into 8 equal slices and you eat 3 slices, what fraction of the pizza is left?">
           <Radio.Group className="flex flex-col">
-            <Radio value="Response1">Vincent van Gogh</Radio>
-            <Radio value="Response2">Pablo Picasso</Radio>
-            <Radio value="Response3">Leonardo da Vinci</Radio>
+            <Radio value="Response1">5/8</Radio>
+            <Radio value="Response2">3/8</Radio>
+            <Radio value="Response3">1/2</Radio>
           </Radio.Group>
         </Form.Item>
       </Form>

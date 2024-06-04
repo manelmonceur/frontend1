@@ -71,7 +71,7 @@ const ChatBox = () => {
         <div className="flex flex-col h-full w-full bg-white px-4 py-6 col-span-9">
           <div className="flex flex-row items-center py-4 px-6 rounded-2xl shadow">
             <div className="flex flex-col ml-3">
-              <div className="font-semibold text-sm">UI Art Design</div>
+              <div className="font-semibold text-sm"></div>
               <div className="text-xs text-gray-500">Active</div>
             </div>
           </div>

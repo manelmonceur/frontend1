@@ -20,7 +20,7 @@ const HerosSection = () => {
 
         <p className="mb-0">
           <a href="" className="text-white shadow">
-            <strong>Are you a teacher?</strong>
+            
           </a>
         </p>
       </div>

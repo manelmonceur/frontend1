@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -7,6 +8,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { Button, DatePicker, Form, Input, Modal, Select } from 'antd';
 import { MdMissedVideoCall } from 'react-icons/md';
 import axios from 'axios';
+import { getParent } from '@/services/apiService';
 
 
 const Calender = () => {
@@ -56,6 +58,16 @@ const ModalAddMeeting = ({ open, close }) => {
     const [role, setRole] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
+  const [parents, setParents] = useState([]);
+
+  const fetchParents = async () => {
+    const response = await getParent();
+    setParents(response);
+  };
+
+  useEffect(() => {
+    fetchParents();
+  }, []);
 
   const onSubmit = async (values: any) => {
     setLoading(true);
@@ -70,7 +82,7 @@ const ModalAddMeeting = ({ open, close }) => {
     <div>
      
       <Modal
-        title="Add Meeting"
+        title="Add Event"
 open={open}
         onCancel={close}
         footer={null}
@@ -112,24 +124,10 @@ open={open}
                 .toLowerCase()
                 .localeCompare((optionB?.label ?? '').toLowerCase())
             }
-            options={[
-              {
-                value: 'parent',
-                label: 'parent',
-              },
-              {
-                value: 'admin',
-                label: 'admin',
-              },
-              {
-                value: 'teacher',
-                label: 'teacher',
-              },
-              {
-                value: 'student',
-                label: 'student',
-              },
-            ]}
+            options={parents.map((p: any) => ({
+              label: p.firstName + ' ' + p.lastName + ' - ' + p.email,
+              value: p.firstName + ' ' + p.lastName,
+            }))}
             onChange={(value) => setRole(value)}
           />
         </Form.Item>

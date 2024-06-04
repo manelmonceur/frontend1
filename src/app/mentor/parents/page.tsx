@@ -50,22 +50,6 @@ const Parents = () => {
           >
 <FiMessageCircle />
           </Button>
-          <Button
-            type="primary"
-            danger
-            // onClick={() => {
-            //   modal.confirm({
-            //     title: "Are you sure you want to delete this child?",
-            //     onOk: async () => {
-            //       await axios.delete(`/child/${record._id}`);
-            //       await mutate("/child");
-            //       message.success("Child deleted successfully");
-            //     },
-            //   });
-            // }}
-          >
-            Delete
-          </Button>
         </Space>
       ),
     },

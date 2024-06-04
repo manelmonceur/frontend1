@@ -47,19 +47,14 @@ const ChatBox = () => {
         <div className="mt-2">
           <div className="flex flex-col -mx-4">
           <Client/>
-          <Client/>
+          <Client1/>
           
           </div>
         </div>
        
         <div className="h-full overflow-hidden relative pt-2">
           <div className="flex flex-col divide-y h-full overflow-y-auto -mx-4">
-          <Client/>
-          <Client/>
-          <Client/>
-          <Client/>
-          <Client/>
-          <Client/>
+         
             
           </div>
          
@@ -70,7 +65,7 @@ const ChatBox = () => {
       <div className="flex flex-row items-center py-4 px-6 rounded-2xl shadow">
       
         <div className="flex flex-col ml-3">
-          <div className="font-semibold text-sm">UI Art Design</div>
+          <div className="font-semibold text-sm">Mohamad</div>
           <div className="text-xs text-gray-500">Active</div>
         </div>
      
@@ -88,7 +83,7 @@ const ChatBox = () => {
                 <div
                     className="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl"
                 >
-                  <div>Hey How are you today?</div>
+                  <div>Your son Fadi did amazing in the session today</div>
                 </div>
               </div>
             </div>
@@ -102,7 +97,7 @@ const ChatBox = () => {
                 <div
                     className="relative mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl"
                 >
-                  <div>I&apos;m ok what about you?</div>
+                  <div>Great</div>
                 </div>
               </div>
             </div>
@@ -149,10 +144,23 @@ const Client = () => {
 
               <div className=" h-10 w-10 rounded-full bg-pink-500 text-pink-300 font-bold flex-shrink-0"/>
               <div className="flex flex-col flex-grow ml-3">
-                <div className="text-sm font-medium">Cuberto</div>
-                <div className="text-xs truncate w-40">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, doloribus?</div>
+                <div className="text-sm font-medium">Mounir</div>
+                <div className="text-xs truncate w-40">can we have a meeting tomorrow afternoon</div>
               </div>
             
             </div>
     )
+}
+const Client1 = () => {
+  return (
+<div className="relative flex flex-row items-center p-4">
+
+            <div className=" h-10 w-10 rounded-full bg-pink-500 text-pink-300 font-bold flex-shrink-0"/>
+            <div className="flex flex-col flex-grow ml-3">
+              <div className="text-sm font-medium">Samia</div>
+              <div className="text-xs truncate w-40">I want to thank you for everything you did for my child</div>
+            </div>
+          
+          </div>
+  )
 }

@@ -68,38 +68,7 @@ const Users = () => {
       dataIndex: 'date',
       key: 'date',
     },
-    {
-      title: 'Action',
-      key: 'action',
-      render: (text: any, record: any) => (
-        <Space>
-          <Button
-            onClick={() => {
-              setEditedPayment(record);
-              setIsPaymentModalOpen(true);
-            }}
-          >
-            Edit
-          </Button>
-          <Button
-            type="primary"
-            danger
-            onClick={() => {
-              modal.confirm({
-                title: 'Are you sure you want to delete this payment?',
-                onOk: async () => {
-                  await axios.delete(`/payment/${record._id}`);
-                  await mutate('/payment');
-                  message.success('Payment deleted successfully');
-                },
-              });
-            }}
-          >
-            Delete
-          </Button>
-        </Space>
-      ),
-    },
+    
   ];
 
   return (

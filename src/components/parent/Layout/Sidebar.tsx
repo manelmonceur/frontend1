@@ -104,7 +104,7 @@ export default function Sidebar() {
         <NavItem
           navSize={navSize}
           icon={MdOutlineQuiz}
-          title="Rating"
+          title="Feedback"
           active={path == '/parent/rating' ? true : false}
           url="/parent/rating"
         />

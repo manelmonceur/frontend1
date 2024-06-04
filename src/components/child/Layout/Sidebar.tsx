@@ -87,8 +87,8 @@ export default function Sidebar() {
         <NavItem
           navSize={navSize}
           icon={MdOutlineCastForEducation}
-          title="Cours"
-          active={path == '/children/cours' ? true : false}
+          title="Courses"
+          active={path == '/children/courses' ? true : false}
           url="/children/cours"
         />
         <NavItem
@@ -105,13 +105,7 @@ export default function Sidebar() {
           active={path == '/children/quiz' ? true : false}
           url="/children/quiz"
         />
-        <NavItem
-          navSize={navSize}
-          icon={MdOutlineMessage}
-          title="Message"
-          active={path == '/children/message' ? true : false}
-          url="/children/message"
-        />
+        
       </Flex>
 
       <Flex
@@ -134,9 +128,9 @@ export default function Sidebar() {
                 display={navSize == 'small' ? 'none' : 'flex'}
               >
                 <Heading as="h3" size="sm" textColor={'white'}>
-                  {/* {session.user.name} */}children
+                  {/* {session.user.name} */}child
                 </Heading>
-                <Text color="gray">children</Text>
+                <Text color="gray">Student</Text>
               </Flex>
             </Flex>
           </MenuButton>

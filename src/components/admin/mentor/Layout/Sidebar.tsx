@@ -77,7 +77,7 @@ export default function Sidebar() {
                 <NavItem
                     navSize={navSize}
                     icon={MdHomeFilled}
-                    title="Home"
+                    title="Dashboard"
                     active={
                         path == '/mentor/dashboard' ? true : false
                     }
@@ -87,7 +87,7 @@ export default function Sidebar() {
                 <NavItem
                     navSize={navSize}
                     icon={MdCalendarMonth}
-                    title="Calender"
+                    title="Calendar"
                     active={path == '/mentor/calender' ? true : false}
                     url="/mentor/calender"
                 />
@@ -95,7 +95,7 @@ export default function Sidebar() {
                 <NavItem
                     navSize={navSize}
                     icon={LuUsers2}
-                    title="parents"
+                    title="Parents"
                     active={
                         path == '/mentor/parents' ? true : false
                     }
@@ -105,11 +105,20 @@ export default function Sidebar() {
                     navSize={navSize}
                     icon={LuUsers2}
 
-                    title="admins"
+                    title="Admins"
                     active={
                         path == '/mentor/admins' ? true : false
                     }
                     url="/mentor/admins"
+                />
+                <NavItem
+                    navSize={navSize}
+                    icon={LuUsers2}
+                    title="Teachers"
+                    active={
+                        path == '/mentor/teachers' ? true : false
+                    }
+                    url="/mentor/teachers"
                 />
                 <NavItem
                     navSize={navSize}
@@ -153,7 +162,7 @@ export default function Sidebar() {
                             onClick={() => router.push('/mentor/profile')}
                             gap={2}
                         >
-                            <MdPersonOutline size={20} /> Profile
+                            <MdPersonOutline size={20} /> Account Details
                         </MenuItem>
                         <MenuDivider />
 
@@ -165,7 +174,7 @@ export default function Sidebar() {
                             }}
                         >
                             <MdLockOutline size={20} />
-                            Se deconnecter
+                            Log Out
                         </MenuItem>
                     </MenuList>
                 </Menu>

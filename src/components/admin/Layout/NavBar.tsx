@@ -205,7 +205,7 @@ const Navbar = () => {
                 display={navSize == 'small' ? 'none' : 'flex'}
               >
                 <Heading as="h3" size="sm" textColor={'white'}>
-                  {/* {session.user.name} */}Super Admin
+                  {/* {session.user.name} */} Super Admin
                 </Heading>
                 <Text color="gray">Admin</Text>
               </Flex>

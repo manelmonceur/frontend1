@@ -76,7 +76,7 @@ export default function Sidebar() {
                 <NavItem
                     navSize={navSize}
                     icon={MdHomeFilled}
-                    title="Home"
+                    title="Dashboard"
                     active={
                         path == '/teachers/dashboard' ? true : false
                     }
@@ -85,28 +85,28 @@ export default function Sidebar() {
                 <NavItem
                     navSize={navSize}
                     icon={MdOutlineCastForEducation}
-                    title="Cours"
+                    title="Courses"
                     active={path == '/teachers/cours' ? true : false}
                     url="/teachers/cours"
                 />
                 <NavItem
                     navSize={navSize}
                     icon={MdCalendarMonth}
-                    title="Calender"
+                    title="Calendar"
                     active={path == '/teachers/calender' ? true : false}
                     url="/teachers/calender"
                 />
                 <NavItem
                     navSize={navSize}
                     icon={MdOutlineQuiz}
-                    title="Quiz"
+                    title="Quizzes"
                     active={path == '/teachers/quiz' ? true : false}
                     url="/teachers/quiz"
                 />
                 <NavItem
                     navSize={navSize}
                     icon={MdAutoStories}
-                    title="parents"
+                    title="Parents"
                     active={
                         path == '/teachers/parents' ? true : false
                     }
@@ -145,7 +145,7 @@ export default function Sidebar() {
                                 <Heading as="h3" size="sm" textColor={"white"}>
                                     {/* {session.user.name} */}Tutor
                                 </Heading>
-                                <Text color="gray">Tutor</Text>
+                                <Text color="gray">Teacher</Text>
                             </Flex>
                         </Flex>
                     </MenuButton>
@@ -166,7 +166,7 @@ export default function Sidebar() {
                             }}
                         >
                             <MdLockOutline size={20} />
-                            Logout
+                            Log Out
                         </MenuItem>
                     </MenuList>
                 </Menu>

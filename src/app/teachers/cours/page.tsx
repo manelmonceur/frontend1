@@ -124,7 +124,7 @@ const Cours = () => {
   return (
     <Box p={16}>
       <Heading textAlign={'center'} py={16}>
-        Mes Cours
+        My Courses
       </Heading>
       <Box
         display={'flex'}
@@ -142,16 +142,16 @@ const Cours = () => {
           colorScheme="blue"
           variant="outline"
         >
-          Ajouter
+          Add Course
         </Button>
       </Box>
       <Table variant="striped" colorScheme="gray" bg={'white'}>
         <Thead>
           <Tr>
             <Th>Assignment Name</Th>
-            <Th>matter Name</Th>
+            <Th>Subject Name</Th>
             <Th>Creation Date</Th>
-            <Th>Nombre d&apos;inscription</Th>
+            
             <Th>Action</Th>
           </Tr>
         </Thead>
@@ -164,7 +164,7 @@ const Cours = () => {
                 name: 'Math',
               },
               description: 'Math',
-              students: [],
+            
             },
             {
               id: '3',
@@ -173,7 +173,7 @@ const Cours = () => {
                 name: 'Math',
               },
               description: 'Math',
-              students: [],
+             
             },
             {
               id: '4',
@@ -182,14 +182,14 @@ const Cours = () => {
                 name: 'Math',
               },
               description: 'Math',
-              students: [],
+             
             },
           ]?.map((item: any) => (
             <Tr key={item.id}>
               <Td>{item.title}</Td>
               <Td>{item.category.name}</Td>
               <Td>{item.description}</Td>
-              <Td>{item.students?.length || 0}</Td>
+             
               <Td>
                 <IconButton
                   aria-label="View assignment"
@@ -218,7 +218,7 @@ const Cours = () => {
                     <PopoverArrow />
                     <PopoverCloseButton />
                     <PopoverHeader>
-                      Are you sure you want to delete!
+                      Are you sure you want to delete this course!
                     </PopoverHeader>
                     <PopoverBody>
                       <Button
@@ -246,12 +246,12 @@ const Cours = () => {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>
-            {selectedCours ? 'Update' : 'Ajouter'} Cours
+            {selectedCours ? 'Update' : 'Add'} Course
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              <FormLabel>Titre</FormLabel>
+              <FormLabel>Title</FormLabel>
               <Input
                 ref={initialRef}
                 placeholder="Titre"
@@ -261,24 +261,32 @@ const Cours = () => {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Catégorie</FormLabel>
+              <FormLabel>Subject</FormLabel>
               <Select
                 value={categorie}
-                placeholder="Select Categorie"
+                placeholder="Select Subject"
                 onChange={(e) => setCategorie(e.target.value)}
               >
                 {[
                   {
+                    id: '1',
+                    name: 'Maths',
+                  },
+                  {
                     id: '2',
-                    name: 'Math',
+                    name: 'Science',
                   },
                   {
                     id: '3',
-                    name: 'Math',
+                    name: 'Physics',
                   },
                   {
                     id: '4',
-                    name: 'Math',
+                    name: 'Chemistry',
+                  },
+                  {
+                    id: '5',
+                    name: 'Biology',
                   },
                 ]?.map((category, index) => (
                   <option key={index} value={category.id}>
