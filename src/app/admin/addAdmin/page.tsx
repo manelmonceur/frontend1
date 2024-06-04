@@ -4,16 +4,20 @@ import { Form, Button, Input, Select } from 'antd';
 import { PiSignInThin } from 'react-icons/pi';
 import axios from '@/utils/axios';
 import { HiUserPlus } from 'react-icons/hi2';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddAdmin = () => {
   const [role, setRole] = useState(null);
+  const [gender, setGender] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
 
   const onSubmit = async (values: any) => {
     setLoading(true);
     try {
-      await axios.post('/user', { ...values, role: role });
+      const response = await axios.post('/user', { ...values, role: role });
+      toast.success('Form submitted successfully!');
     } catch (error) {
       console.log(error);
     }
@@ -32,15 +36,8 @@ const AddAdmin = () => {
         onFinish={onSubmit}
       >
         <Form.Item
-          label="First name"
-          name="firstName"
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-          <Input className="w-[400px]" />
-        </Form.Item>
-        <Form.Item
-          label="Last name"
-          name="lastName"
+          label="Name"
+          name="name"
           rules={[{ required: true, message: 'Please input your username!' }]}
         >
           <Input className="w-[400px]" />
@@ -66,7 +63,22 @@ const AddAdmin = () => {
           name="gender"
           rules={[{ required: true, message: 'Please input your gender!' }]}
         >
-          <Input type="text" className="w-[400px]" />
+          <Select
+            className="!w-[400px]"
+            showSearch
+            placeholder="Search to Select"
+            options={[
+              {
+                value: 1,
+                label: 'Male',
+              },
+              {
+                value: 2,
+                label: 'Female',
+              },
+            ]}
+            onChange={(value) => setGender(value)}
+          />
         </Form.Item>
         <Form.Item
           label="Password"
@@ -95,20 +107,20 @@ const AddAdmin = () => {
             }
             options={[
               {
-                value: 'parent',
-                label: 'parent',
+                value: 2,
+                label: 'Admin',
               },
               {
-                value: 'admin',
-                label: 'admin',
+                value: 3,
+                label: 'Mentor',
               },
               {
-                value: 'teacher',
-                label: 'teacher',
+                value: 4,
+                label: 'Parent',
               },
               {
-                value: 'mentor',
-                label: 'mentor',
+                value: 5,
+                label: 'Teacher',
               },
             ]}
             onChange={(value) => setRole(value)}
@@ -129,6 +141,7 @@ const AddAdmin = () => {
           </div>
         </Form.Item>
       </Form>
+      <ToastContainer />
     </div>
   );
 };

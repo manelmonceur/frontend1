@@ -6,7 +6,10 @@ import SignIn from '../SignIn';
 import axios from '@/utils/axios';
 import { useForm } from 'antd/es/form/Form';
 import { signIn } from 'next-auth/react';
-import { signUpParent } from '@/services/apiService';
+import { Login, signUpParent } from '@/services/apiService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Router from 'next/router';
 
 interface ModalLoginProps {
   isOpen: boolean;
@@ -42,6 +45,7 @@ const ModalLogin: FC<ModalLoginProps> = ({ isOpen, close }) => {
                 values.dateRange[1].format('YYYY-MM-DD'),
               ]
             : null,
+          role: 4,
         };
         await signUpParent(formattedValues);
         setShow(false);
@@ -51,8 +55,21 @@ const ModalLogin: FC<ModalLoginProps> = ({ isOpen, close }) => {
           password: values.password,
           redirect: false,
         });
-
-        close();
+        try {
+          const response = await Login(values);
+          console.log(response);
+          const role = response.user.role;
+          setTimeout(() => {
+            if (role == 1 || role == 2)
+              window.location.href = '/admin/dashboard';
+            if (role == 3) window.location.href = '/mentor/dashboard';
+            if (role == 4) window.location.href = '/parent/children';
+            if (role == 5) window.location.href = '/teachers/dashboard';
+          }, 100);
+        } catch (e) {
+          toast.error('Email or Password not correct');
+        }
+        // close();
       }
     } catch (error) {
       console.log(error);

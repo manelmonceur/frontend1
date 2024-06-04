@@ -7,17 +7,9 @@ const SignUp = () => {
   return (
     <div className="w-full grid grid-cols-2">
       <Form.Item
-        label="First name"
-        name="firstName"
+        label="Name"
+        name="name"
         className="w-full "
-        rules={[{ required: true, message: 'Please input your username!' }]}
-      >
-        <Input className="w-full" />
-      </Form.Item>
-      <Form.Item
-        label="Last name"
-        name="lastName"
-        className="w-full"
         rules={[{ required: true, message: 'Please input your username!' }]}
       >
         <Input className="w-full" />

@@ -2,12 +2,23 @@ import axiosInstance from '@/utils/axios';
 
 export const signUpParent = async (data: any) => {
   try {
-    const response = await axiosInstance.post('/parent', {
+    const response = await axiosInstance.post('/user', {
       ...data,
     });
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data?.message || 'Failed to sign up');
+  }
+};
+
+export const Login = async (data: any) => {
+  try {
+    const response = await axiosInstance.post('/user/login', {
+      ...data,
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Failed to sign in');
   }
 };
 
