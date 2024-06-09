@@ -1,8 +1,39 @@
 'use client';
 
+import { createMessages, getMessages } from '@/services/apiService';
 import { useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
 
 const ChatBox = () => {
+  const [messages, setMessages] = useState([]);
+  const [content, setContent] = useState('');
+
+  const _getMessages = async () => {
+    const m = await getMessages();
+    console.log(1);
+    setMessages(m);
+  };
+
+  const createMessage = async () => {
+    if (content == '') return;
+    const formData = { name: 'Admin', content };
+    await createMessages(formData);
+    setContent('');
+    await _getMessages();
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // Call your function here
+      _getMessages();
+    }, 20000); // 20 seconds in milliseconds
+
+    return () => {
+      // Clean up the interval when the component unmounts
+      clearInterval(intervalId);
+    };
+  }, []);
+
   return (
     <>
       <div className="grid grid-cols-12 h-screen antialiased text-gray-800">
@@ -52,18 +83,18 @@ const ChatBox = () => {
             <div className="mt-2">
               <div className="flex flex-col -mx-4">
                 <Client />
-                <Client />
+                {/* <Client /> */}
               </div>
             </div>
 
             <div className="h-full overflow-hidden relative pt-2">
               <div className="flex flex-col divide-y h-full overflow-y-auto -mx-4">
+                {/* <Client /> */}
+                {/* <Client />
                 <Client />
                 <Client />
                 <Client />
-                <Client />
-                <Client />
-                <Client />
+                <Client /> */}
               </div>
             </div>
           </div>
@@ -78,25 +109,19 @@ const ChatBox = () => {
           <div className="h-full overflow-hidden py-4">
             <div className="h-full overflow-y-auto">
               <div className="grid grid-cols-12 gap-y-2">
-                <div className="col-start-1 col-end-8 p-3 rounded-lg">
-                  <div className="flex flex-row items-center">
-                    <div className=" h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0" />
+                {/* message */}
+                {messages.map((m: any) => (
+                  <div className="col-start-1 col-end-8 p-3 rounded-lg">
+                    <div className="flex flex-row items-center">
+                      <div className=" h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0" />
 
-                    <div className="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
-                      <div>Hey How are you today?</div>
+                      <div className="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
+                        <div className="text-sm font-semibold">{m.name}</div>
+                        <div>{m.content}</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                <div className="col-start-6 col-end-13 p-3 rounded-lg">
-                  <div className="flex items-center justify-start flex-row-reverse">
-                    <div className="h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0" />
-
-                    <div className="relative mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl">
-                      <div>I&apos;m ok what about you?</div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -104,6 +129,8 @@ const ChatBox = () => {
             <div className="flex flex-row items-center w-full border rounded-3xl h-12 px-2">
               <div className="w-full">
                 <input
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
                   type="text"
                   className="border border-transparent w-full focus:outline-none text-sm h-10 flex items-center"
                   placeholder="Type your message...."
@@ -111,7 +138,10 @@ const ChatBox = () => {
               </div>
             </div>
             <div className="ml-6">
-              <button className="flex items-center justify-center h-10 w-10 rounded-full bg-gray-200 hover:bg-gray-300 text-indigo-800 text-white">
+              <button
+                onClick={createMessage}
+                className="flex items-center justify-center h-10 w-10 rounded-full bg-gray-200 hover:bg-gray-300 text-indigo-800 text-white"
+              >
                 <svg
                   className="w-5 h-5 transform rotate-90 -mr-px"
                   fill="none"
@@ -142,11 +172,11 @@ const Client = () => {
     <div className="relative flex flex-row items-center p-4">
       <div className=" h-10 w-10 rounded-full bg-pink-500 text-pink-300 font-bold flex-shrink-0" />
       <div className="flex flex-col flex-grow ml-3">
-        <div className="text-sm font-medium">Cuberto</div>
-        <div className="text-xs truncate w-40">
+        <div className="text-sm font-medium">Mentors</div>
+        {/* <div className="text-xs truncate w-40">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis,
           doloribus?
-        </div>
+        </div> */}
       </div>
     </div>
   );

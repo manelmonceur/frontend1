@@ -49,11 +49,11 @@ const SignUp = () => {
 
       <Form.Item
         label="Meet date"
-        name="dateRange"
+        name="firstMeetingDate"
         className="w-full"
         rules={[{ required: true, message: 'Please select a date range!' }]}
       >
-        <RangePicker className="w-full" />
+        <Input type="date" className="w-full" />
       </Form.Item>
     </div>
   );

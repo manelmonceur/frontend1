@@ -6,7 +6,12 @@ import { fetcher } from '../../../../utils/fetcher';
 import { Modal, Table } from 'antd';
 import { Button, Space } from 'antd';
 import { FiMessageCircle } from 'react-icons/fi';
-import { activateParent, deleteParent, getParent } from '@/services/apiService';
+import {
+  activateParent,
+  deleteParent,
+  getParent,
+  getUsers,
+} from '@/services/apiService';
 import {
   Heading,
   Avatar,
@@ -24,8 +29,12 @@ const Users = () => {
   const [open, setOpen] = useState(false);
 
   const fetchParents = async () => {
-    const response = await getParent();
-    setParents(response);
+    const response: any[] = await getUsers();
+    console.log(response);
+    console.log(
+      response.filter((u: any) => u.role == 4 && u.accountStatus == true)
+    );
+    setParents(response.filter((u:any) => u.role == 4 && u.accountStatus == true));
   };
 
   const handleActivate = async (id: any) => {
@@ -45,8 +54,8 @@ const Users = () => {
   const columns = [
     {
       title: 'Name',
-      dataIndex: 'firstName',
-      key: 'firstName',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
       title: 'Phone',
@@ -88,10 +97,7 @@ const Users = () => {
         <h1 className="text-xl">Parents</h1>
       </div>
 
-      <Table
-        dataSource={parents.filter((p) => p.activate == true)}
-        columns={columns}
-      />
+      <Table dataSource={parents} columns={columns} />
       <ModalProfile open={open} close={() => setOpen(false)} user={null} />
     </div>
   );

@@ -6,14 +6,20 @@ import { fetcher } from '../../../../utils/fetcher';
 import { Table } from 'antd';
 import { Button, Space } from 'antd';
 import { FiMessageCircle } from 'react-icons/fi';
-import { activateParent, deleteParent, getParent } from '@/services/apiService';
+import {
+  activateParent,
+  deleteParent,
+  getParent,
+  getUsers,
+} from '@/services/apiService';
 
 const Users = () => {
   const [parents, setParents] = useState([]);
 
   const fetchParents = async () => {
-    const response = await getParent();
-    setParents(response);
+    const response = await getUsers();
+    console.log(response);
+    setParents(response.filter((u) => u.role == 4));
   };
 
   const handleActivate = async (id: any) => {
@@ -33,8 +39,8 @@ const Users = () => {
   const columns = [
     {
       title: 'Name',
-      dataIndex: 'firstName',
-      key: 'firstName',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
       title: 'Phone',
@@ -57,9 +63,7 @@ const Users = () => {
       title: 'Meet Range',
       key: 'meetRange',
       render: (text: any, record: any) => (
-        <span>
-          {record.dateRange[0]} - {record.dateRange[1]}
-        </span>
+        <span>{record?.firstMeetingDate}</span>
       ),
     },
     {
@@ -67,7 +71,7 @@ const Users = () => {
       key: 'activate',
       render: (text: any, record: any) => (
         <Space>
-          <Button>{record.activate ? 'Active' : 'Pending'}</Button>
+          <Button>{record.accountStatus ? 'Active' : 'Pending'}</Button>
         </Space>
       ),
     },
@@ -76,7 +80,7 @@ const Users = () => {
       key: 'action',
       render: (text: any, record: any) => (
         <Space>
-          {!record.activate ? (
+          {!record.accountStatus ? (
             <Button onClick={() => handleActivate(record._id)}>
               {'Activate'}
             </Button>
@@ -104,7 +108,7 @@ const Users = () => {
       </div>
 
       <Table
-        dataSource={parents.filter((p) => p.activate == false)}
+        dataSource={parents.filter((p) => p.accountStatus != true)}
         columns={columns}
       />
     </div>

@@ -50,11 +50,6 @@ const ModalLogin: FC<ModalLoginProps> = ({ isOpen, close }) => {
         await signUpParent(formattedValues);
         setShow(false);
       } else {
-        signIn('credentials', {
-          email: values.email,
-          password: values.password,
-          redirect: false,
-        });
         try {
           const response = await Login(values);
           console.log(response);

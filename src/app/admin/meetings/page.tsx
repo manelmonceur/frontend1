@@ -4,7 +4,13 @@ import { Form, Button, Input, Select, DatePicker, Modal, Space } from 'antd';
 import axios from '@/utils/axios';
 import { MdMissedVideoCall } from 'react-icons/md';
 import { Table } from 'antd';
-import { createMeeting, getMeetings, getParent } from '@/services/apiService';
+import {
+  createMeeting,
+  deleteMeeting,
+  getMeetings,
+  getParent,
+  getUsers,
+} from '@/services/apiService';
 
 const Meetings = () => {
   const [open, setOpen] = useState(false);
@@ -16,22 +22,14 @@ const Meetings = () => {
     setData(response);
   };
 
+  const handleDelete = async (id: any) => {
+    await deleteMeeting(id);
+    await fetchMeetings();
+  };
+
   useEffect(() => {
     fetchMeetings();
   }, []);
-
-  const _data = [
-    {
-      name: 'meeting',
-      mentor: 'Ahmed ben Ahmida',
-      mentor_email: 'ahmed@gmail.com',
-      parent: 'Walid',
-      parent_email: 'walid@gmail.com',
-      admin: 'yassin',
-      admin_email: 'yassin@gmail.com',
-      date: '22/02/2024',
-    },
-  ];
 
   const columns = [
     {
@@ -80,7 +78,13 @@ const Meetings = () => {
       render: (text: any, record: any) => (
         <Space>
           <Button>Edit</Button>
-          <Button type="primary" danger>
+          <Button
+            type="primary"
+            danger
+            onClick={() => {
+              handleDelete(record._id);
+            }}
+          >
             Delete
           </Button>
         </Space>
@@ -105,7 +109,7 @@ const Meetings = () => {
         </Button>
       </div>
 
-      <Table dataSource={_data} columns={columns} />
+      <Table dataSource={data} columns={columns} />
       <ModalAddMeeting
         open={open}
         close={() => setOpen(false)}
@@ -123,10 +127,12 @@ const ModalAddMeeting = ({ open, close, fetchData }) => {
   const [error, setError] = useState<string>();
 
   const [parents, setParents] = useState([]);
+  const [mentors, setMentors] = useState([]);
 
   const fetchParents = async () => {
-    const response = await getParent();
-    setParents(response);
+    const response = await getUsers();
+    setParents(response.filter((u: any) => u.role == 4));
+    setMentors(response.filter((u: any) => u.role == 3));
   };
 
   useEffect(() => {
@@ -137,7 +143,7 @@ const ModalAddMeeting = ({ open, close, fetchData }) => {
     setLoading(true);
     const data = {
       ...values,
-      date: values.Date.format('YYYY-MM-DD HH:MM'),
+      date: values.date.format('YYYY-MM-DD HH:MM'),
     };
 
     try {
@@ -188,8 +194,8 @@ const ModalAddMeeting = ({ open, close, fetchData }) => {
                   .localeCompare((optionB?.label ?? '').toLowerCase())
               }
               options={parents.map((p: any) => ({
-                label: p.firstName + ' ' + p.lastName + ' - ' + p.email,
-                value: p.firstName + ' ' + p.lastName,
+                label: p.name + ' - ' + p.email,
+                value: p.name,
               }))}
               onChange={(value) => setRole(value)}
             />
@@ -219,24 +225,10 @@ const ModalAddMeeting = ({ open, close, fetchData }) => {
                   .toLowerCase()
                   .localeCompare((optionB?.label ?? '').toLowerCase())
               }
-              options={[
-                {
-                  value: 'parent',
-                  label: 'parent',
-                },
-                {
-                  value: 'admin',
-                  label: 'admin',
-                },
-                {
-                  value: 'teacher',
-                  label: 'teacher',
-                },
-                {
-                  value: 'student',
-                  label: 'student',
-                },
-              ]}
+              options={mentors.map((p: any) => ({
+                label: p.name + ' - ' + p.email,
+                value: p.name,
+              }))}
               onChange={(value) => setRole(value)}
             />
           </Form.Item>
@@ -249,21 +241,21 @@ const ModalAddMeeting = ({ open, close, fetchData }) => {
           </Form.Item>
           <Form.Item
             label="Admin"
-            name="Admin"
+            name="admin"
             rules={[{ required: true, message: 'Please input Name!' }]}
           >
             <Input className="!w-[400px]" />
           </Form.Item>
           <Form.Item
             label="Admin Email"
-            name="Admin_email"
+            name="admin_email"
             rules={[{ required: true, message: 'Please input Name!' }]}
           >
             <Input className="!w-[400px]" />
           </Form.Item>
           <Form.Item
             label="Date"
-            name="Date"
+            name="date"
             rules={[{ required: true, message: 'Please input Date!' }]}
           >
             <DatePicker
