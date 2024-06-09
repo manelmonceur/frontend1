@@ -67,15 +67,6 @@ const Users = () => {
       ),
     },
     {
-      title: 'Status',
-      key: 'activate',
-      render: (text: any, record: any) => (
-        <Space>
-          <Button>{record.accountStatus ? 'Active' : 'Pending'}</Button>
-        </Space>
-      ),
-    },
-    {
       title: 'Action',
       key: 'action',
       render: (text: any, record: any) => (
