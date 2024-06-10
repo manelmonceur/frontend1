@@ -119,3 +119,25 @@ export const getMessages = async () => {
     throw new Error(error.response?.data?.message || 'Failed to get message');
   }
 };
+
+export const createPayment = async (data: any) => {
+  try {
+    const response = await axiosInstance.post('/payment', {
+      ...data,
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(
+      error.response?.data?.message || 'Failed to create payment'
+    );
+  }
+};
+
+export const getPayment = async () => {
+  try {
+    const response = await axiosInstance.get('/payment');
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Failed to get payment');
+  }
+};

@@ -10,7 +10,6 @@ const ChatBox = () => {
 
   const _getMessages = async () => {
     const m = await getMessages();
-    console.log(1);
     setMessages(m);
   };
 
@@ -26,7 +25,7 @@ const ChatBox = () => {
     const intervalId = setInterval(() => {
       // Call your function here
       _getMessages();
-    }, 20000); // 20 seconds in milliseconds
+    }, 10000); // 10 seconds in milliseconds
 
     return () => {
       // Clean up the interval when the component unmounts

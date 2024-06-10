@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useSWR, { mutate } from 'swr';
 import { Button, Modal, Space, Table, message } from 'antd';
 import PaymentModal from '@/components/parent/payment/PaymentModal';
 import axios from '@/utils/axios';
 // import { Payment } from '../../../../types/api';
 import { fetcher } from '../../../../utils/fetcher';
+import { createPayment, getPayment } from '@/services/apiService';
 
 const Users = () => {
   const [modal, contextHolder] = Modal.useModal();
@@ -16,26 +17,33 @@ const Users = () => {
 
   // const { data: payments } = useSWR<Payment[]>('/payment', fetcher);
 
-  const payments = [
-    {
-      _id: '1',
-      teacher: 'teacher1',
-      teacher_email: 'ahmed@gmail.com',
-      child: 'child1',
-      formation: 'Math',
-      amount: '50dt',
-      date: '22/07/2023',
-    },
-    {
-      _id: '2',
-      teacher: 'teacher2',
-      teacher_email: 'walid@gmail.com',
-      child: 'child2',
-      formation: 'Science',
-      amount: '100dt',
-      date: '03/01/2023',
-    },
-  ];
+  const [payments, setPayments] = useState([]);
+
+  const _getPayments = async () => {
+    const p = await getPayment();
+    setPayments(p);
+  };
+
+  const _createPayment = async (values: any) => {
+    const data = window.localStorage.getItem('user');
+    if (!data) return;
+    const user = JSON.parse(data);
+
+    const content = {
+      ...values,
+      parent: user?.user?.name ?? 'Parent 1',
+      parent_email: user?.user?.email ?? 'parent@gmail.com',
+    };
+
+    await createPayment(content);
+    setIsPaymentModalOpen(false);
+
+    await _getPayments();
+  };
+
+  useEffect(() => {
+    _getPayments();
+  }, []);
 
   const columns = [
     {
@@ -65,10 +73,11 @@ const Users = () => {
     },
     {
       title: 'Date',
-      dataIndex: 'date',
       key: 'date',
+      render: (text: any, record: any) => (
+        <span>{record.createdAt.split('T')[0]}</span>
+      ),
     },
-    
   ];
 
   return (
@@ -93,6 +102,7 @@ const Users = () => {
         isOpen={isPaymentModalOpen}
         setIsOpen={setIsPaymentModalOpen}
         editedPayment={editedPayment}
+        _submit={_createPayment}
       />
 
       {contextHolder}

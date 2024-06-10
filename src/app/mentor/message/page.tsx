@@ -26,7 +26,7 @@ const ChatBox = () => {
     const intervalId = setInterval(() => {
       // Call your function here
       _getMessages();
-    }, 20000); // 20 seconds in milliseconds
+    }, 10000); // 10 seconds in milliseconds
 
     return () => {
       // Clean up the interval when the component unmounts

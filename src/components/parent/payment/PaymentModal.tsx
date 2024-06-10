@@ -9,9 +9,15 @@ interface Props {
   isOpen: boolean;
   editedPayment?: any;
   setIsOpen: (isOpen: boolean) => void;
+  _submit: any;
 }
 
-const AddPaymentModal: FC<Props> = ({ isOpen, editedPayment, setIsOpen }) => {
+const AddPaymentModal: FC<Props> = ({
+  isOpen,
+  editedPayment,
+  setIsOpen,
+  _submit,
+}) => {
   const [loading, setLoading] = useState(false);
 
   return (
@@ -27,6 +33,7 @@ const AddPaymentModal: FC<Props> = ({ isOpen, editedPayment, setIsOpen }) => {
         setLoading={setLoading}
         setIsOpen={setIsOpen}
         editedPayment={editedPayment}
+        _submit={_submit}
       />
     </Modal>
   );
@@ -38,26 +45,20 @@ interface PropsForm {
   editedPayment?: any;
   setLoading: (loading: boolean) => void;
   setIsOpen: (isOpen: boolean) => void;
+  _submit: any;
 }
 
 const AddPaymentForm: FC<PropsForm> = ({
   editedPayment,
   setLoading,
   setIsOpen,
+  _submit,
 }) => {
   const [form] = Form.useForm();
 
   const onFinish = async (values: any) => {
     setLoading(true);
-    try {
-      if (editedPayment)
-        await axios.put(`/payment/${editedPayment._id}`, values);
-      else await axios.post('/payment', values);
-      await mutate('/payment');
-      setIsOpen(false);
-    } catch (error) {
-      console.log(error);
-    }
+    await _submit(values);
     setLoading(false);
   };
 

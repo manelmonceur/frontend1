@@ -1,37 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Modal, Table, Input } from 'antd';
 import { Button, Space } from 'antd';
 import { FiMessageCircle } from 'react-icons/fi';
+import { getPayment } from '@/services/apiService';
 
 const Payments = () => {
   const [open, setOpen] = useState(false);
 
-  const data = [
-    {
-      _id: '1',
-      teacher: 'teacher1',
-      teacher_email: 'ahmed@gmail.com',
-      parent: 'Tawfik',
-      parent_email: 'tawfik@gmail.com',
-      child: 'child1',
-      formation: 'Math',
-      amount: '50dt',
-      date: '22/07/2023',
-    },
-    {
-      _id: '2',
-      teacher: 'teacher2',
-      teacher_email: 'walid@gmail.com',
-      parent: 'Tawfik',
-      parent_email: 'tawfik@gmail.com',
-      child: 'child2',
-      formation: 'Science',
-      amount: '100dt',
-      date: '03/01/2023',
-    },
-  ];
+  const [payments, setPayments] = useState([]);
+
+  useEffect(() => {
+    _getPayments();
+  }, []);
+
+  const _getPayments = async () => {
+    const p = await getPayment();
+    setPayments(p);
+  };
 
   const columns = [
     {
@@ -71,8 +58,10 @@ const Payments = () => {
     },
     {
       title: 'Date',
-      dataIndex: 'date',
       key: 'date',
+      render: (text: any, record: any) => (
+        <span>{record.createdAt.split('T')[0]}</span>
+      ),
     },
     // {
     //   title: 'Action',
@@ -139,7 +128,7 @@ const Payments = () => {
         </div>
       </div>
 
-      <Table dataSource={data} columns={columns} />
+      <Table dataSource={payments} columns={columns} />
       <ModalAddPayment open={open} close={() => setOpen(false)} />
     </div>
   );
